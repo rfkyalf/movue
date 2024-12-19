@@ -31,3 +31,46 @@ export const DEVICE_LIST = [
     desc: 'MoVue is accessible on all major web browsers, offering high-quality streaming on your laptop or desktop.',
   },
 ];
+
+export const FAQ_LIST = [
+  {
+    question: 'What is MoVue?',
+    answer:
+      'MoVue is a streaming service that allows you to watch movies and shows on demand.',
+  },
+  {
+    question: 'Is MoVue free to use?',
+    answer:
+      'Yes, MoVue offers a free version with limited features and a premium version with additional content.',
+  },
+  {
+    question: 'How do I create an account?',
+    answer:
+      'You don’t need to create an account to use MoVue. Just start watching content right away!',
+  },
+  {
+    question: 'What devices are supported?',
+    answer:
+      'MoVue supports web browsers, smartphones, tablets, smart TVs, and streaming devices like Chromecast.',
+  },
+  {
+    question: 'Is there an offline mode?',
+    answer:
+      'Currently, MoVue does not support offline downloads. You can stream content online at any time.',
+  },
+  {
+    question: 'How can I report issues or bugs?',
+    answer:
+      'You can contact our support team via the "Help & Support" section on our website.',
+  },
+  {
+    question: 'Is parental control available?',
+    answer:
+      'Yes, MoVue provides parental control settings to restrict content based on age ratings.',
+  },
+  {
+    question: 'How often is new content added?',
+    answer:
+      'New content is added weekly, including movies, TV shows, and exclusive MoVue Originals.',
+  },
+];
