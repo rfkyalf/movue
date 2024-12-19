@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { DEVICE_LIST } from '../../../helpers/constants';
 import SectionHeader from '../SectionHeader.vue';
 </script>
 
@@ -8,13 +9,21 @@ import SectionHeader from '../SectionHeader.vue';
       title="We Provide you streaming experience across various devices"
       sub-title="With MoVue, you can enjoy your favorite movies and TV shows anytime, anywhere. Our platform is designed to be compatible with a wide range of devices, ensuring that you never miss a moment of entertainment."
     />
-    <ul class="grid grid-cols-3 gap-4">
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <li
-        v-for="index in 6"
+        v-for="(device, index) in DEVICE_LIST"
         :key="index"
-        class="bg-black w-full flex flex-col rounded-lg"
+        class="bg-gradient-to-tr from-[#0a0a0a] via-[#0a0a0a] via-70% to-[red]/10 border border-neutral-900 w-full flex flex-col gap-y-4 rounded-lg p-4"
       >
-        memek
+        <div class="flex items-center gap-x-6">
+          <div class="p-2 bg-neutral-900 border border-neutral-800 rounded-md">
+            <component :is="device.icon" class="size-7 text-[red]/90" />
+          </div>
+          <h4 class="text-xl text-neutral-50 font-semibold">
+            {{ device.title }}
+          </h4>
+        </div>
+        <p class="text-sm text-neutral-400">{{ device.desc }}</p>
       </li>
     </ul>
   </section>
