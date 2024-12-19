@@ -26,7 +26,18 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex items-center overflow-auto no-scrollbar gap-2">
+  <ul v-if="loading" class="flex items-center overflow-auto no-scrollbar gap-2">
+    <li
+      v-for="index in 6"
+      :key="index"
+      class="w-[200px] h-[220px] bg-neutral-500 animate-pulse rounded-lg flex-shrink-0"
+    ></li>
+  </ul>
+  <p v-if="error" class="w-full h-[220px] bg-red-500 text-white">{{ error }}</p>
+  <div
+    v-if="!loading && genres.length"
+    class="flex items-center overflow-auto no-scrollbar gap-2"
+  >
     <div
       v-for="genre in genres"
       :key="genre.id"
