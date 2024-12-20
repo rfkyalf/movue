@@ -10,7 +10,9 @@ defineProps<{
 
 <template>
   <div class="wrapper relative h-full flex flex-col justify-center gap-y-1">
-    <p class="text-[red]/90 text-lg font-medium flex items-center">
+    <p
+      class="text-[red]/90 text-lg font-medium flex items-center self-center md:self-start"
+    >
       <HashtagIcon class="size-6" /> Today&apos;s Trending
     </p>
     <h2 class="text-3xl text-neutral-50 font-bold text-center md:text-start">

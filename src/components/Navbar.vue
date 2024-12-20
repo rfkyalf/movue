@@ -95,6 +95,7 @@ onUnmounted(() => {
       <li v-for="(nav, index) in NAV_LIST" :key="index">
         <RouterLink
           :to="nav.href"
+          :onclick="toggleNav"
           active-class="bg-neutral-700 !text-neutral-50"
           class="text-neutral-500 text-lg px-4 py-1 rounded-md hover:bg-neutral-700 hover:text-neutral-50"
           >{{ nav.name }}</RouterLink
@@ -103,6 +104,7 @@ onUnmounted(() => {
       <li>
         <RouterLink
           to="/search"
+          :onclick="toggleNav"
           active-class="bg-neutral-700 !text-neutral-50"
           class="text-neutral-500 text-lg flex items-center gap-x-1"
           ><MagnifyingGlassIcon class="size-5" /> Search</RouterLink
