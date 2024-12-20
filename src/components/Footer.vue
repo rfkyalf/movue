@@ -3,9 +3,9 @@ import { NAV_LIST } from '../helpers/constants';
 </script>
 
 <template>
-  <footer class="bg-neutral-900 w-full py-4">
+  <footer class="bg-neutral-900 w-full py-4 md:py-6">
     <div class="wrapper">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-4 md:pb-6">
         <div
           class="bg-neutral-800 md:max-w-[300px] h-fit flex flex-col gap-y-3 p-4 rounded-lg"
         >
@@ -72,7 +72,7 @@ import { NAV_LIST } from '../helpers/constants';
       </div>
       <div>
         <p
-          class="text-neutral-200 text-base text-center border-t border-neutral-700 pt-2"
+          class="text-neutral-200 text-base text-center border-t border-neutral-700 pt-2 md:pt-4"
         >
           Created By Rifky Alfarez | Design by lorem at Figma
         </p>
