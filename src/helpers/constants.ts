@@ -105,15 +105,11 @@ export const PLAN_LIST = [
 export const NAV_LIST = [
   { name: 'Home', href: '/' },
   {
-    name: 'Movies & Shows',
-    href: '/movies-and-shows',
+    name: 'Movies',
+    href: '/movies',
   },
   {
-    name: 'Support',
-    href: '/support',
-  },
-  {
-    name: 'Subscription',
-    href: '/subscription',
+    name: 'TV Shows',
+    href: '/tv-shows',
   },
 ];

@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import HomeView from '../views/HomeView.vue';
-import MoviesAndShowsView from '../views/MoviesAndShowsView.vue';
+import MoviesView from '../views/MoviesView.vue';
 
 const routes = [
   { path: '/', component: HomeView },
-  { path: '/movies-and-shows', component: MoviesAndShowsView },
+  { path: '/movies', component: MoviesView },
 ];
 
 const router = createRouter({
