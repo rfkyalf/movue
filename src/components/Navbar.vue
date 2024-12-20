@@ -5,6 +5,8 @@ import {
   XMarkIcon,
 } from '@heroicons/vue/24/outline';
 import { onMounted, onUnmounted, ref } from 'vue';
+import { NAV_LIST } from '../helpers/constants';
+import { RouterLink } from 'vue-router';
 
 const open = ref(false);
 const scrolled = ref(false);
@@ -49,37 +51,27 @@ onUnmounted(() => {
         <XMarkIcon v-if="open" class="text-neutral-200 size-7" />
       </button>
       <!-- desktop nav -->
-      <nav>
+      <nav class="hidden lg:block">
         <ul
           class="bg-neutral-950 rounded-lg overflow-hidden flex items-center gap-x-4 p-1"
         >
-          <li>
-            <a href="" class="text-neutral-50 text-lg px-4 py-1 rounded-md"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a href="" class="text-neutral-50 text-lg px-4 py-1 rounded-md"
-              >Movies & Shows</a
-            >
-          </li>
-          <li>
-            <a href="" class="text-neutral-50 text-lg px-4 py-1 rounded-md"
-              >Support</a
-            >
-          </li>
-          <li>
-            <a
-              href=""
-              class="text-neutral-50 text-lg bg-neutral-700 px-4 py-1 rounded-md"
-              >Subscription</a
+          <li v-for="(nav, index) in NAV_LIST" :key="index">
+            <RouterLink
+              :to="nav.href"
+              active-class="bg-neutral-700 !text-neutral-50"
+              class="text-neutral-500 text-lg px-4 py-1 rounded-md hover:bg-neutral-700 hover:text-neutral-50"
+              >{{ nav.name }}</RouterLink
             >
           </li>
         </ul>
       </nav>
-      <div class="flex items-center gap-x-2">
-        <MagnifyingGlassIcon class="text-neutral-200 size-6" />
-        <img src="/github.svg" alt="Github" class="size-6" />
+      <div class="hidden lg:flex items-center gap-x-2">
+        <a href="/search">
+          <MagnifyingGlassIcon class="text-neutral-200 size-6" />
+        </a>
+        <a href="https://github.com/rfkyalf/movue">
+          <img src="/github.svg" alt="Github" class="size-6" />
+        </a>
       </div>
     </div>
   </section>
@@ -100,14 +92,28 @@ onUnmounted(() => {
     <ul
       class="h-full w-full flex flex-col items-center justify-center gap-y-4 mt-8"
     >
-      <li><a href="" class="text-neutral-50 text-lg">Home</a></li>
-      <li><a href="" class="text-neutral-50 text-lg">Movies & Shows</a></li>
-      <li><a href="" class="text-neutral-50 text-lg">Support</a></li>
-      <li><a href="" class="text-neutral-50 text-lg">Subscription</a></li>
-      <li>
-        <a href="" class="text-neutral-50 text-lg flex items-center gap-x-1"
-          ><MagnifyingGlassIcon class="text-neutral-200 size-5" /> Search</a
+      <li v-for="(nav, index) in NAV_LIST" :key="index">
+        <RouterLink
+          :to="nav.href"
+          active-class="bg-neutral-700 !text-neutral-50"
+          class="text-neutral-500 text-lg px-4 py-1 rounded-md hover:bg-neutral-700 hover:text-neutral-50"
+          >{{ nav.name }}</RouterLink
         >
+      </li>
+      <li>
+        <RouterLink
+          to="/search"
+          active-class="bg-neutral-700 !text-neutral-50"
+          class="text-neutral-500 text-lg flex items-center gap-x-1"
+          ><MagnifyingGlassIcon class="size-5" /> Search</RouterLink
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/rfkyalf/movue"
+          class="text-neutral-50 text-lg"
+          ><img src="/github.svg" alt="github" class="size-6"
+        /></a>
       </li>
     </ul>
   </nav>

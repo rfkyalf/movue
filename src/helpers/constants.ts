@@ -101,3 +101,19 @@ export const PLAN_LIST = [
     yearlyPrice: '149.99',
   },
 ];
+
+export const NAV_LIST = [
+  { name: 'Home', href: '/' },
+  {
+    name: 'Movies & Shows',
+    href: '/movies-and-shows',
+  },
+  {
+    name: 'Support',
+    href: '/support',
+  },
+  {
+    name: 'Subscription',
+    href: '/subscription',
+  },
+];
