@@ -9,7 +9,20 @@ const axiosInstance = axios.create({
 export const fetchMovies = async () => {
   try {
     const response = await axiosInstance.get(
-      `/movie/now_playing?api_key=${API_KEY}`
+      `/trending/movie/day?api_key=${API_KEY}`
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log('Failed to fetch data', error);
+    return null;
+  }
+};
+
+export const fetchTVs = async () => {
+  try {
+    const response = await axiosInstance.get(
+      `/trending/tv/day?api_key=${API_KEY}`
     );
 
     return response.data;

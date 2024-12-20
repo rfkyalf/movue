@@ -110,6 +110,6 @@ export const NAV_LIST = [
   },
   {
     name: 'TV Shows',
-    href: '/tv-shows',
+    href: '/shows',
   },
 ];
