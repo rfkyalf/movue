@@ -25,7 +25,17 @@ onMounted(async () => {
 </script>
 <template>
   <section class="wrapper pb-8 md:pb-16 flex flex-col gap-y-4 md:gap-y-6">
-    <div class="relative overflow-hidden border border-neutral-800 rounded-lg">
+    <div
+      v-if="loading"
+      class="bg-neutral-500 h-[300px] rounded-lg animate-pulse"
+    ></div>
+    <div v-if="error" class="bg-red-500 h-[300px] rounded-lg">
+      {{ error }}
+    </div>
+    <div
+      v-if="!loading && movies.length"
+      class="relative overflow-hidden border border-neutral-800 rounded-lg"
+    >
       <ul
         class="absolute grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 gap-2"
       >
@@ -49,10 +59,10 @@ onMounted(async () => {
         </h3>
         <p class="text-sm text-neutral-400 text-center max-w-[400px]">
           This is a clear and concise call to action that encourages users to
-          sign up for a free trial of StreamVibe.
+          sign up for a free trial of MoVue.
         </p>
         <button
-          class="w-fit bg-[red]/90 text-sm text-white px-4 py-2 rounded-md mt-6"
+          class="w-fit bg-[red]/90 hover:bg-[red]/80 text-sm text-white px-4 py-2 rounded-md mt-6"
         >
           Start a Free Trial
         </button>

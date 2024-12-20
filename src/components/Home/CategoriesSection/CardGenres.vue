@@ -38,16 +38,21 @@ onMounted(async () => {
     v-if="!loading && genres.length"
     class="flex items-center overflow-auto no-scrollbar gap-2"
   >
-    <div
+    <a
+      href="/"
       v-for="genre in genres"
       :key="genre.id"
-      class="bg-neutral-900 border flex-shrink-0 border-neutral-800 rounded-lg flex flex-col gap-y-3 justify-between p-4 overflow-hidden"
+      class="group bg-neutral-900 hover:bg-neutral-800 border flex-shrink-0 border-neutral-800 rounded-lg flex flex-col gap-y-3 justify-between p-4 overflow-hidden"
     >
       <MovieInCardGenres :genre-id="genre.id" />
       <div class="flex items-center justify-between">
-        <p class="text-base text-neutral-400">{{ genre.name }}</p>
-        <ArrowLongRightIcon class="size-7 text-neutral-400" />
+        <p class="text-base group-hover:text-neutral-300 text-neutral-400">
+          {{ genre.name }}
+        </p>
+        <ArrowLongRightIcon
+          class="size-7 group-hover:text-neutral-300 text-neutral-400"
+        />
       </div>
-    </div>
+    </a>
   </div>
 </template>
