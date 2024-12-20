@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 import { IMAGE_ENDPOINT_SMALL } from '../../../helpers/constants';
-import { fetchMovies } from '../../../services/movieApi';
+import { fetchDatas } from '../../../services/movieApi';
 import { Movie } from '../../../types/movie';
 
 const movies = ref<Movie[]>([]);
@@ -11,7 +11,7 @@ const error = ref<string | null>(null);
 onMounted(async () => {
   loading.value = true;
   try {
-    const data = await fetchMovies();
+    const data = await fetchDatas('movie');
     if (data?.results) {
       movies.value = data.results;
     }

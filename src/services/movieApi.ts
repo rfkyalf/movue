@@ -6,10 +6,10 @@ const axiosInstance = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
 });
 
-export const fetchMovies = async () => {
+export const fetchDatas = async (type: string) => {
   try {
     const response = await axiosInstance.get(
-      `/trending/movie/day?api_key=${API_KEY}`
+      `/trending/${type}/day?api_key=${API_KEY}`
     );
 
     return response.data;
@@ -19,10 +19,23 @@ export const fetchMovies = async () => {
   }
 };
 
-export const fetchTVs = async () => {
+export const fetchMovies = async (status: string) => {
   try {
     const response = await axiosInstance.get(
-      `/trending/tv/day?api_key=${API_KEY}`
+      `/movie/${status}?api_key=${API_KEY}`
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log('Failed to fetch data', error);
+    return null;
+  }
+};
+
+export const fetchTVs = async (status: string) => {
+  try {
+    const response = await axiosInstance.get(
+      `/tv/${status}?api_key=${API_KEY}`
     );
 
     return response.data;
