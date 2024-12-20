@@ -4,6 +4,7 @@ import CategoriesSection from '../components/Home/CategoriesSection/CategoriesSe
 import DevicesSection from '../components/Home/DevicesSection/DevicesSection.vue';
 import FAQSection from '../components/Home/FAQSection/FAQSection.vue';
 import PricingSection from '../components/Home/PricingSection/PricingSection.vue';
+import CTASection from '../components/Home/CTASection/CTASection.vue';
 </script>
 
 <template>
@@ -13,5 +14,6 @@ import PricingSection from '../components/Home/PricingSection/PricingSection.vue
     <DevicesSection />
     <FAQSection />
     <PricingSection />
+    <CTASection />
   </main>
 </template>
