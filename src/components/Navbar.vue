@@ -66,9 +66,12 @@ onUnmounted(() => {
         </ul>
       </nav>
       <div class="hidden lg:flex items-center gap-x-2">
-        <a href="/search">
+        <RouterLink
+          to="/search"
+          active-class="bg-neutral-700 !text-neutral-50 p-1 rounded-md"
+        >
           <MagnifyingGlassIcon class="text-neutral-200 size-6" />
-        </a>
+        </RouterLink>
         <a href="https://github.com/rfkyalf/movue">
           <img src="/github.svg" alt="Github" class="size-6" />
         </a>
@@ -106,7 +109,7 @@ onUnmounted(() => {
           to="/search"
           :onclick="toggleNav"
           active-class="bg-neutral-700 !text-neutral-50"
-          class="text-neutral-500 text-lg flex items-center gap-x-1"
+          class="text-neutral-500 text-lg flex items-center gap-x-1 px-4 py-1 rounded-md"
           ><MagnifyingGlassIcon class="size-5" /> Search</RouterLink
         >
       </li>

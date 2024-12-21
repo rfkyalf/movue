@@ -69,3 +69,15 @@ export const fetchGenres = async () => {
     return null;
   }
 };
+
+export const fetchSearch = async (query: string) => {
+  try {
+    const response = await axiosInstance.get(
+      `/search/multi?query=${query}&api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log('Failed to fetch data', error);
+    return null;
+  }
+};
