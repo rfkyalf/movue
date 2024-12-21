@@ -55,7 +55,7 @@ const loading = ref<boolean>(false);
 onMounted(async () => {
   loading.value = true;
   try {
-    const data = await fetchCasts('movie', id);
+    const data = await fetchCasts('tv', id);
     if (data?.cast) {
       casts.value = data.cast;
     }

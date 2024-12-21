@@ -24,7 +24,13 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <section class="wrapper pb-8 md:pb-16 flex flex-col gap-y-4 md:gap-y-6">
+  <section
+    v-motion
+    :initial="{ opacity: 0 }"
+    :visible-once="{ opacity: 1 }"
+    :duration="1500"
+    class="wrapper pb-8 md:pb-16 flex flex-col gap-y-4 md:gap-y-6"
+  >
     <div
       v-if="loading"
       class="bg-neutral-500 h-[300px] rounded-lg animate-pulse"

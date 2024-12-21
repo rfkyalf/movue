@@ -25,14 +25,14 @@
     >
       <img
         :src="IMAGE_ENDPOINT_MEDIUM + detail.poster_path"
-        :alt="detail.title"
+        :alt="detail.name"
         class="h-[280px] w-[220px] object-cover object-center rounded-lg self-center"
       />
       <div class="flex flex-col pl-4">
         <h2
           class="text-2xl md:text-3xl font-bold text-neutral-50 text-center md:text-start mt-2 md:mt-0"
         >
-          {{ detail.title }}
+          {{ detail.name }}
         </h2>
         <p
           class="text-base text-neutral-300 text-center md:text-start max-w-[700px] text-pretty md:mt-2"
@@ -54,21 +54,21 @@
 import { PlayIcon } from '@heroicons/vue/24/solid';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { fetchDetail } from '../../services/movieApi';
-import { Movie } from '../../types/movie';
 import { IMAGE_ENDPOINT, IMAGE_ENDPOINT_MEDIUM } from '../../helpers/constants';
+import { fetchDetail } from '../../services/movieApi';
+import { TV } from '../../types/movie';
 
 const route = useRoute();
 const id = route.params.id as string;
 
-const detail = ref<Movie>();
+const detail = ref<TV>();
 const loading = ref<boolean>(false);
 const error = ref<string | null>(null);
 
 onMounted(async () => {
   loading.value = true;
   try {
-    const data = await fetchDetail('movie', id);
+    const data = await fetchDetail('tv', id);
     detail.value = data;
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Unknown error occured';

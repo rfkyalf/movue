@@ -4,7 +4,13 @@ import HeroContent from './HeroContent.vue';
 </script>
 
 <template>
-  <section class="relative h-screen overflow-hidden bg-neutral-950">
+  <section
+    v-motion
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1 }"
+    :duration="1000"
+    class="relative h-screen overflow-hidden bg-neutral-950"
+  >
     <HeroBackground />
     <HeroContent />
   </section>

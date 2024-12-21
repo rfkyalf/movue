@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { IMAGE_ENDPOINT_MEDIUM } from '../../helpers/constants';
 import { TV } from '../../types/movie';
+import { RouterLink } from 'vue-router';
 
 const props = defineProps<{
   datas: (cat: string) => Promise<{ results: TV[] }>;
@@ -29,7 +30,14 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section class="wrapper flex flex-col gap-y-4 md:gap-y-6" :class="class">
+  <section
+    v-motion
+    :initial="{ opacity: 0 }"
+    :visible-once="{ opacity: 1 }"
+    :duration="1500"
+    class="wrapper flex flex-col gap-y-4 md:gap-y-6"
+    :class="class"
+  >
     <h2 class="text-2xl md:text-3xl text-neutral-50 font-bold">
       {{ titleSection }}
     </h2>
@@ -51,11 +59,13 @@ onMounted(async () => {
       class="flex items-center gap-x-2 md:gap-x-4 overflow-auto no-scrollbar"
     >
       <li v-for="tv in tvs" :key="tv.id" class="flex-shrink-0">
-        <img
-          :src="IMAGE_ENDPOINT_MEDIUM + tv.poster_path"
-          :alt="tv.name"
-          class="w-[180px] h-[280px] object-cover object-center rounded-lg"
-        />
+        <RouterLink :to="`detail/tv/${tv.id}`">
+          <img
+            :src="IMAGE_ENDPOINT_MEDIUM + tv.poster_path"
+            :alt="tv.name"
+            class="w-[180px] h-[280px] object-cover object-center rounded-lg hover:opacity-50"
+          />
+        </RouterLink>
       </li>
     </ul>
   </section>

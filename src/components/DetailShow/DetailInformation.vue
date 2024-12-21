@@ -22,19 +22,13 @@
       <li>
         <h3>
           <span class="text-neutral-100 font-medium">Title: </span
-          >{{ detail.title }}
+          >{{ detail.name }}
         </h3>
       </li>
       <li>
         <p>
           <span class="text-neutral-100 font-medium">Synopsis: </span
           >{{ detail.overview }}
-        </p>
-      </li>
-      <li>
-        <p>
-          <span class="text-neutral-100 font-medium">Duration: </span
-          >{{ formatRuntime(detail.runtime) }}
         </p>
       </li>
       <li class="flex flex-wrap items-center gap-2">
@@ -49,8 +43,8 @@
       </li>
       <li>
         <p>
-          <span class="text-neutral-100 font-medium">Release Date: </span
-          >{{ formatToUSDate(detail.release_date) }}
+          <span class="text-neutral-100 font-medium">First Air Date: </span
+          >{{ formatToUSDate(detail.first_air_date) }}
         </p>
       </li>
       <li>
@@ -69,14 +63,14 @@
       </li>
       <li>
         <p>
-          <span class="text-neutral-100 font-medium">Budget: </span
-          >{{ formatDollar(detail.budget) }}
+          <span class="text-neutral-100 font-medium">Number of Seasons: </span
+          >{{ detail.number_of_seasons }}
         </p>
       </li>
       <li>
         <p>
-          <span class="text-neutral-100 font-medium">Revenue: </span
-          >{{ formatDollar(detail.revenue) }}
+          <span class="text-neutral-100 font-medium">Number of Episodes: </span
+          >{{ detail.number_of_episodes }}
         </p>
       </li>
     </ul>
@@ -87,25 +81,21 @@
 import { StarIcon } from '@heroicons/vue/24/solid';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { Movie } from '../../types/movie';
+import { formatToUSDate } from '../../helpers/utils';
 import { fetchDetail } from '../../services/movieApi';
-import {
-  formatDollar,
-  formatRuntime,
-  formatToUSDate,
-} from '../../helpers/utils';
+import { TV } from '../../types/movie';
 
 const route = useRoute();
 const id = route.params.id as string;
 
-const detail = ref<Movie>();
+const detail = ref<TV>();
 const loading = ref<boolean>(false);
 const error = ref<string | null>(null);
 
 onMounted(async () => {
   loading.value = true;
   try {
-    const data = await fetchDetail('movie', id);
+    const data = await fetchDetail('tv', id);
     detail.value = data;
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Unknown error occured';

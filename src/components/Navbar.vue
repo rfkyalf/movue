@@ -53,12 +53,12 @@ onUnmounted(() => {
       <!-- desktop nav -->
       <nav class="hidden lg:block">
         <ul
-          class="bg-neutral-950 rounded-lg overflow-hidden flex items-center gap-x-4 p-1"
+          class="bg-neutral-800 rounded-lg overflow-hidden flex items-center gap-x-4 p-1"
         >
           <li v-for="(nav, index) in NAV_LIST" :key="index">
             <RouterLink
               :to="nav.href"
-              active-class="bg-neutral-700 !text-neutral-50"
+              active-class="bg-neutral-500 !text-neutral-50"
               class="text-neutral-500 text-lg px-4 py-1 rounded-md hover:bg-neutral-700 hover:text-neutral-50"
               >{{ nav.name }}</RouterLink
             >

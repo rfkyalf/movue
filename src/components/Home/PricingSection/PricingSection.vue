@@ -10,7 +10,13 @@ const setSubType = (type: string) => {
 </script>
 
 <template>
-  <section class="wrapper pb-8 md:pb-16 flex flex-col gap-y-4 md:gap-y-6">
+  <section
+    v-motion
+    :initial="{ opacity: 0 }"
+    :visible-once="{ opacity: 1 }"
+    :duration="1500"
+    class="wrapper pb-8 md:pb-16 flex flex-col gap-y-4 md:gap-y-6"
+  >
     <SectionHeader
       title="Choose the plan that's right for you"
       sub-title="Join MoVue and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!"

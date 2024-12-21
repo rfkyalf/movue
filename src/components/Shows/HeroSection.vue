@@ -31,7 +31,13 @@ const setIndex = (index: number) => {
 </script>
 
 <template>
-  <section class="relative h-screen w-full">
+  <section
+    v-motion
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1 }"
+    :duration="1000"
+    class="relative h-screen w-full"
+  >
     <div v-if="loading" class="bg-neutral-500 h-screen w-full animate-pulse" />
     <div v-if="error" class="bg-red-500 h-screen w-full">{{ error }}</div>
     <div
@@ -67,7 +73,12 @@ const setIndex = (index: number) => {
         />
       </div>
       <!-- Hero Text -->
-      <HeroContent :title="tv.name" :overview="tv.overview" href="/" />
+      <HeroContent
+        :title="tv.name"
+        :overview="tv.overview"
+        type="tv"
+        :id="tv.id"
+      />
     </div>
   </section>
 </template>

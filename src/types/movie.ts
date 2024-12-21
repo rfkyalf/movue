@@ -25,6 +25,19 @@ export interface TV {
   overview: string;
   backdrop_path: string;
   poster_path: string;
+  first_air_date: string;
+  vote_average: number;
+  vote_count: number;
+  number_of_episodes: number;
+  number_of_seasons: number;
+  popularity: number;
+
+  genres: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
 }
 
 export interface Person {

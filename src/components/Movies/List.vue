@@ -29,7 +29,14 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section class="wrapper flex flex-col gap-y-4 md:gap-y-6" :class="class">
+  <section
+    v-motion
+    :initial="{ opacity: 0 }"
+    :visible-once="{ opacity: 1 }"
+    :duration="1500"
+    class="wrapper flex flex-col gap-y-4 md:gap-y-6"
+    :class="class"
+  >
     <h2 class="text-2xl md:text-3xl text-neutral-50 font-bold">
       {{ titleSection }}
     </h2>

@@ -6,6 +6,7 @@ defineProps<{
   title: string;
   overview: string;
   id: number;
+  type: string;
 }>();
 </script>
 
@@ -25,7 +26,7 @@ defineProps<{
       {{ overview }}
     </p>
     <RouterLink
-      :to="`/detail/movie/${id}`"
+      :to="`/detail/${type}/${id}`"
       class="w-fit bg-[red]/90 hover:bg-[red]/70 focus:ring focus:ring-[red] text-white flex items-center gap-x-2 px-4 py-2 rounded-lg self-center md:self-start mt-4"
     >
       <PlayIcon class="size-5" />
