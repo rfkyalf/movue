@@ -1,6 +1,16 @@
 <template>
+  <div
+    v-if="error"
+    class="wrapper h-[500px] p-4 my-8 md:my-16 bg-red-500 rounded-lg"
+  >
+    <p>{{ error }}</p>
+  </div>
+  <div
+    v-if="loading"
+    class="wrapper h-[500px] p-4 my-8 md:my-16 bg-neutral-500 rounded-lg animate-pulse"
+  ></div>
   <section
-    v-if="detail"
+    v-if="!loading && detail"
     class="wrapper p-4 my-8 md:my-16 flex flex-col gap-y-4 md:gap-y-4 bg-neutral-900 rounded-lg"
   >
     <h2 class="text-2xl text-neutral-50 font-semibold">Detail Information</h2>

@@ -21,7 +21,7 @@ const HERO_DESC =
         {{ HERO_DESC }}
       </p>
       <button
-        class="w-fit px-4 md:px-6 py-2 md:py-3 mt-4 bg-[red]/90 hover:bg-[red]/80 text-sm md:text-base text-white flex items-center gap-x-3 rounded-md"
+        class="w-fit px-4 md:px-6 py-2 md:py-3 mt-4 bg-[red]/90 hover:bg-[red]/80 text-sm md:text-base text-white flex items-center gap-x-3 rounded-md focus:ring focus:ring-[red]"
       >
         <PlayIcon class="size-5 md:size-6" /> Start Watching Now
       </button>

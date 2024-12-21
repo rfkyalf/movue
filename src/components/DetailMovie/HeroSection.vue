@@ -1,6 +1,13 @@
 <template>
+  <div
+    v-if="loading"
+    class="h-[500px] w-full bg-neutral-500 animate-pulse"
+  ></div>
+  <div v-if="error" class="h-[500px] w-full bg-red-500">
+    <p>{{ error }}</p>
+  </div>
   <section
-    v-if="detail"
+    v-if="!loading && detail"
     :style="{
       backgroundImage: `url(${IMAGE_ENDPOINT}${detail.backdrop_path})`,
     }"
@@ -29,10 +36,10 @@
           {{ detail.overview }}
         </p>
         <button
-          class="w-fit self-center md:self-start bg-[red]/90 text-white px-6 py-1 rounded-md text-base mt-4 md:mt-6 flex items-center gap-x-2"
+          class="w-fit self-center md:self-start bg-[red]/90 text-white px-8 py-2 rounded-md text-base mt-4 md:mt-6 flex items-center justify-center gap-x-2"
         >
           <PlayIcon class="size-6" />
-          Play
+          Watch Movie
         </button>
       </div>
     </div>

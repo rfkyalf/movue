@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import DetailMovieView from '../views/DetailMovieView.vue';
-import HomeView from '../views/HomeView.vue';
-import MoviesView from '../views/MoviesView.vue';
-import SearchView from '../views/SearchView.vue';
-import ShowsView from '../views/ShowsView.vue';
+const DetailMovieView = () => import('../views/DetailMovieView.vue');
+const HomeView = () => import('../views/HomeView.vue');
+const MoviesView = () => import('../views/MoviesView.vue');
+const SearchView = () => import('../views/SearchView.vue');
+const ShowsView = () => import('../views/ShowsView.vue');
 
 const routes = [
   { path: '/', component: HomeView },

@@ -62,7 +62,7 @@ onMounted(async () => {
           sign up for a free trial of MoVue.
         </p>
         <button
-          class="w-fit bg-[red]/90 hover:bg-[red]/80 text-sm text-white px-4 py-2 rounded-md mt-6"
+          class="w-fit bg-[red]/90 hover:bg-[red]/80 focus:ring focus:ring-[red] text-sm text-white px-4 py-2 rounded-md mt-6"
         >
           Start a Free Trial
         </button>

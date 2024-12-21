@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { HashtagIcon, PlayIcon } from '@heroicons/vue/24/solid';
+import { RouterLink } from 'vue-router';
 
 defineProps<{
   title: string;
   overview: string;
-  href: string;
+  id: number;
 }>();
 </script>
 
@@ -23,12 +24,12 @@ defineProps<{
     >
       {{ overview }}
     </p>
-    <a
-      :href="href"
-      class="w-fit bg-[red]/90 hover:bg-[red]/70 text-white flex items-center gap-x-2 px-4 py-2 rounded-lg self-center md:self-start mt-4"
+    <RouterLink
+      :to="`/detail/movie/${id}`"
+      class="w-fit bg-[red]/90 hover:bg-[red]/70 focus:ring focus:ring-[red] text-white flex items-center gap-x-2 px-4 py-2 rounded-lg self-center md:self-start mt-4"
     >
       <PlayIcon class="size-5" />
       Watch Now
-    </a>
+    </RouterLink>
   </div>
 </template>

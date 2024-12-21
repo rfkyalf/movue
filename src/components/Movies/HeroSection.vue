@@ -67,7 +67,11 @@ const setIndex = (index: number) => {
         />
       </div>
       <!-- Hero Text -->
-      <HeroContent :title="movie.title" :overview="movie.overview" href="/" />
+      <HeroContent
+        :title="movie.title"
+        :overview="movie.overview"
+        :id="movie.id"
+      />
     </div>
   </section>
 </template>

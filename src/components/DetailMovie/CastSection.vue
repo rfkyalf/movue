@@ -1,8 +1,15 @@
 <template>
-  <section class="wrapper mb-8 md:mb-16">
+  <div
+    v-if="loading"
+    class="wrapper mb-8 md:mb-16 h-[300px] bg-neutral-500 animate-pulse"
+  ></div>
+  <div v-if="error" class="wrapper mb-8 md:mb-16 h-[300px] bg-red-500">
+    <p>{{ error }}</p>
+  </div>
+  <section v-if="!loading && casts.length" class="wrapper mb-8 md:mb-16">
     <h2 class="text-2xl text-neutral-50 font-semibold">Cast</h2>
     <ul
-      class="flex items-center gap-x-2 md:gap-x-4 overflow-auto no-scrollbar mt-2 md:mt-4"
+      class="flex items-start gap-x-2 md:gap-x-4 overflow-auto no-scrollbar mt-2 md:mt-4"
     >
       <li v-for="cast in casts" :key="cast.id" class="flex-shrink-0">
         <img
@@ -14,8 +21,12 @@
           :alt="cast.name"
           class="h-[250px] w-[180px] rounded-lg object-cover object-center"
         />
-        <p class="text-base text-neutral-100 mt-1">{{ cast.name }}</p>
-        <p class="text-base text-neutral-500">{{ cast.character }}</p>
+        <p class="text-base text-neutral-100 mt-1 max-w-[180px]">
+          {{ cast.name }}
+        </p>
+        <p class="text-base text-neutral-500 max-w-[180px]">
+          {{ cast.character }}
+        </p>
       </li>
     </ul>
   </section>

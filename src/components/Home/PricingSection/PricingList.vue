@@ -24,12 +24,12 @@ const props = defineProps<{
       </p>
       <div class="flex items-center gap-x-4">
         <button
-          class="text-sm text-neutral-100 bg-neutral-950 hover:bg-neutral-950/80 border border-neutral-900 rounded-md px-4 py-2"
+          class="text-sm text-neutral-100 bg-neutral-950 hover:bg-neutral-950/80 focus:ring focus:ring-neutral-700 border border-neutral-700 rounded-md px-4 py-2"
         >
           Start Free Trial
         </button>
         <button
-          class="text-sm text-neutral-100 bg-[red]/90 hover:bg-[red]/80 rounded-md px-4 py-2"
+          class="text-sm text-neutral-100 bg-[red]/90 hover:bg-[red]/80 focus:ring focus:ring-[red] rounded-md px-4 py-2"
         >
           Choose Plan
         </button>

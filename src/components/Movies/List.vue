@@ -51,11 +51,14 @@ onMounted(async () => {
       class="flex items-center gap-x-2 md:gap-x-4 overflow-auto no-scrollbar"
     >
       <li v-for="movie in movies" :key="movie.id" class="flex-shrink-0">
-        <img
-          :src="IMAGE_ENDPOINT_MEDIUM + movie.poster_path"
-          :alt="movie.title"
-          class="w-[180px] h-[280px] object-cover object-center rounded-lg"
-        />
+        <RouterLink :to="`/detail/movie/${movie.id}`">
+          <img
+            :title="movie.title"
+            :src="IMAGE_ENDPOINT_MEDIUM + movie.poster_path"
+            :alt="movie.title"
+            class="w-[180px] h-[280px] object-cover object-center rounded-lg hover:opacity-50"
+          />
+        </RouterLink>
       </li>
     </ul>
   </section>
