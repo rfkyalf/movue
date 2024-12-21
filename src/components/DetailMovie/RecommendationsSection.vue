@@ -1,21 +1,19 @@
 <template>
   <section class="wrapper mb-8 md:mb-16">
-    <h2 class="text-2xl text-neutral-50 font-semibold">Cast</h2>
+    <h2 class="text-2xl text-neutral-50 font-semibold">Recommendations</h2>
     <ul
       class="flex items-center gap-x-2 md:gap-x-4 overflow-auto no-scrollbar mt-2 md:mt-4"
     >
-      <li v-for="cast in casts" :key="cast.id" class="flex-shrink-0">
+      <li v-for="movie in movies" :key="movie.id" class="flex-shrink-0">
         <img
           :src="
-            cast.profile_path === null
+            movie.poster_path === null
               ? '/placeholder.svg'
-              : IMAGE_ENDPOINT_MEDIUM + cast.profile_path
+              : IMAGE_ENDPOINT_MEDIUM + movie.poster_path
           "
-          :alt="cast.name"
+          :alt="movie.title"
           class="h-[250px] w-[180px] rounded-lg object-cover object-center"
         />
-        <p class="text-base text-neutral-100 mt-1">{{ cast.name }}</p>
-        <p class="text-base text-neutral-500">{{ cast.character }}</p>
       </li>
     </ul>
   </section>
@@ -23,23 +21,23 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { Person } from '../../types/movie';
-import { fetchCasts } from '../../services/movieApi';
 import { useRoute } from 'vue-router';
 import { IMAGE_ENDPOINT_MEDIUM } from '../../helpers/constants';
+import { fetchRecommendations } from '../../services/movieApi';
+import { Movie } from '../../types/movie';
 
 const route = useRoute();
 const id = route.params.id as string;
-const casts = ref<Person[]>([]);
+const movies = ref<Movie[]>([]);
 const error = ref<string | null>(null);
 const loading = ref<boolean>(false);
 
 onMounted(async () => {
   loading.value = true;
   try {
-    const data = await fetchCasts('movie', id);
-    if (data?.cast) {
-      casts.value = data.cast;
+    const data = await fetchRecommendations('movie', id);
+    if (data?.results) {
+      movies.value = data.results;
     }
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Unknown error occured';

@@ -93,3 +93,27 @@ export const fetchDetail = async (type: string, id: string) => {
     return null;
   }
 };
+
+export const fetchCasts = async (type: string, id: string) => {
+  try {
+    const response = await axiosInstance.get(
+      `/${type}/${id}/credits?api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log('Failed to fetch data', error);
+    return null;
+  }
+};
+
+export const fetchRecommendations = async (type: string, id: string) => {
+  try {
+    const response = await axiosInstance.get(
+      `/${type}/${id}/recommendations?api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log('Failed to fetch data', error);
+    return null;
+  }
+};
