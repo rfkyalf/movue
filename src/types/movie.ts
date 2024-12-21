@@ -4,6 +4,19 @@ export interface Movie {
   overview: string;
   backdrop_path: string;
   poster_path: string;
+  release_date: string;
+  vote_average: number;
+  vote_count: number;
+  runtime: number;
+  popularity: number;
+  budget: number;
+  revenue: number;
+  genres: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
 }
 
 export interface TV {

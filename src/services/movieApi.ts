@@ -81,3 +81,15 @@ export const fetchSearch = async (query: string) => {
     return null;
   }
 };
+
+export const fetchDetail = async (type: string, id: string) => {
+  try {
+    const response = await axiosInstance.get(
+      `/${type}/${id}?api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log('Failed to fetch data', error);
+    return null;
+  }
+};

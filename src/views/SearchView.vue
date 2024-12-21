@@ -39,8 +39,8 @@
           class="px-4 py-2 flex flex-col gap-y-2 max-h-[300px] overflow-auto no-scrollbar"
         >
           <li v-for="search in searchs" :key="search.id">
-            <a
-              :href="
+            <RouterLink
+              :to="
                 search.media_type === 'movie'
                   ? `/detail/movie/${search.id}`
                   : search.media_type === 'tv'
@@ -68,7 +68,7 @@
               />
               <p class="text-base text-neutral-100">
                 {{ search.title || search.name }}
-              </p></a
+              </p></RouterLink
             >
           </li>
         </ul>
@@ -83,6 +83,7 @@ import { IMAGE_ENDPOINT_SMALL } from '../helpers/constants';
 import { fetchSearch } from '../services/movieApi';
 import { SearchResult } from '../types/movie';
 import debounce from 'lodash.debounce';
+import { RouterLink } from 'vue-router';
 
 const searchs = ref<SearchResult[]>([]);
 const loading = ref<boolean>(false);
