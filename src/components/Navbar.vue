@@ -31,7 +31,7 @@ onUnmounted(() => {
 <template>
   <section
     :class="{
-      'bg-neutral-700': open,
+      'bg-neutral-700 lg:bg-transparent': open,
       'bg-neutral-700/50 backdrop-blur-sm': scrolled,
     }"
     class="fixed z-40 top-0 left-0 right-0 transition-colors duration-300"

@@ -58,10 +58,10 @@ export const fetchMoviesByGenre = async (genreId: number) => {
   }
 };
 
-export const fetchGenres = async () => {
+export const fetchGenres = async (type: string) => {
   try {
     const response = await axiosInstance.get(
-      `/genre/movie/list?api_key=${API_KEY}`
+      `/genre/${type}/list?api_key=${API_KEY}`
     );
     return response.data;
   } catch (error) {

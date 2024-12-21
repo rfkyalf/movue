@@ -12,7 +12,7 @@ const error = ref<string | null>(null);
 onMounted(async () => {
   loading.value = true;
   try {
-    const data = await fetchGenres();
+    const data = await fetchGenres('movie');
     if (data?.genres) {
       genres.value = data.genres;
     }
