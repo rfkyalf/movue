@@ -113,3 +113,26 @@ export const NAV_LIST = [
     href: '/shows',
   },
 ];
+
+export const NAV_MOVIE_LIST = [
+  { name: 'Genres', href: '/search' },
+  {
+    name: 'Search',
+    href: '/search',
+  },
+];
+
+export const SOCIAL_LIST = [
+  {
+    name: 'Github',
+    href: 'https://github.com/rfkyalf',
+  },
+  {
+    name: 'Linkedin',
+    href: 'https://www.linkedin.com/in/rfkyalf/',
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/rfkyalf/',
+  },
+];

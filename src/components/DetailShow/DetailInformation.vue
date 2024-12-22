@@ -36,9 +36,11 @@
         <p
           v-for="genre in detail.genres"
           :key="genre.id"
-          class="bg-[red]/30 border border-[red]/50 px-2 py-1 rounded-md"
+          class="bg-[red]/30 hover:bg-[red]/50 border border-[red]/50 px-2 py-1 rounded-md"
         >
-          {{ genre.name }}
+          <a :href="`/genre/tv/${genre.id}?genre=${toSlugCase(genre.name)}`">{{
+            genre.name
+          }}</a>
         </p>
       </li>
       <li>
@@ -81,7 +83,7 @@
 import { StarIcon } from '@heroicons/vue/24/solid';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { formatToUSDate } from '../../helpers/utils';
+import { formatToUSDate, toSlugCase } from '../../helpers/utils';
 import { fetchDetail } from '../../services/movieApi';
 import { TV } from '../../types/movie';
 

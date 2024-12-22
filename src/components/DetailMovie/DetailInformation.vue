@@ -42,9 +42,12 @@
         <p
           v-for="genre in detail.genres"
           :key="genre.id"
-          class="bg-[red]/30 border border-[red]/50 px-2 py-1 rounded-md"
+          class="bg-[red]/30 hover:bg-[red]/50 border border-[red]/50 px-2 py-1 rounded-md"
         >
-          {{ genre.name }}
+          <a
+            :href="`/genre/movie/${genre.id}?genre=${toSlugCase(genre.name)}`"
+            >{{ genre.name }}</a
+          >
         </p>
       </li>
       <li>
@@ -93,6 +96,7 @@ import {
   formatDollar,
   formatRuntime,
   formatToUSDate,
+  toSlugCase,
 } from '../../helpers/utils';
 
 const route = useRoute();

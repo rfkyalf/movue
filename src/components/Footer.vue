@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NAV_LIST } from '../helpers/constants';
+import { NAV_LIST, NAV_MOVIE_LIST, SOCIAL_LIST } from '../helpers/constants';
 </script>
 
 <template>
@@ -11,9 +11,9 @@ import { NAV_LIST } from '../helpers/constants';
         >
           <div class="flex items-center gap-x-2">
             <img src="/logo.png" alt="logo" class="size-7" />
-            <h3 class="text-xl text-neutral-50 font-bold">MoVue</h3>
+            <h3 class="text-xl md:text-2xl text-neutral-50 font-bold">MoVue</h3>
           </div>
-          <p class="text-sm text-neutral-400">
+          <p class="text-sm md:text-base text-neutral-400">
             MoVue is a streaming web platform built with Vue.js, currently under
             development. Its main features are not fully functional yet,
             focusing on a modern and responsive user interface.
@@ -21,48 +21,56 @@ import { NAV_LIST } from '../helpers/constants';
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="flex flex-col">
-            <h3 class="text-base text-neutral-100 font-medium">Quick Links</h3>
+            <h3 class="text-base md:text-lg text-neutral-100 font-medium">
+              Quick Links
+            </h3>
             <ul>
               <li
                 v-for="(nav, index) in NAV_LIST"
                 :key="index"
-                class="text-sm text-neutral-300"
+                class="text-sm md:text-base text-neutral-300 hover:underline"
               >
                 <a :href="nav.href">{{ nav.name }}</a>
               </li>
             </ul>
           </div>
           <div class="flex flex-col">
-            <h3 class="text-base text-neutral-100 font-medium">Movies</h3>
+            <h3 class="text-base md:text-lg text-neutral-100 font-medium">
+              Movies
+            </h3>
             <ul>
               <li
-                v-for="(nav, index) in NAV_LIST"
+                v-for="(nav, index) in NAV_MOVIE_LIST"
                 :key="index"
-                class="text-sm text-neutral-300"
+                class="text-sm md:text-base text-neutral-300 hover:underline"
               >
                 <a :href="nav.href">{{ nav.name }}</a>
               </li>
             </ul>
           </div>
           <div class="flex flex-col">
-            <h3 class="text-base text-neutral-100 font-medium">TV Shows</h3>
+            <h3 class="text-base md:text-lg text-neutral-100 font-medium">
+              TV Shows
+            </h3>
             <ul>
               <li
-                v-for="(nav, index) in NAV_LIST"
+                v-for="(nav, index) in NAV_MOVIE_LIST"
                 :key="index"
-                class="text-sm text-neutral-300"
+                class="text-sm md:text-base text-neutral-300 hover:underline"
               >
                 <a :href="nav.href">{{ nav.name }}</a>
               </li>
             </ul>
           </div>
           <div class="flex flex-col">
-            <h3 class="text-base text-neutral-100 font-medium">Find us on:</h3>
+            <h3 class="text-base md:text-lg text-neutral-100 font-medium">
+              Find us on:
+            </h3>
             <ul>
               <li
-                v-for="(nav, index) in NAV_LIST"
+                v-for="(nav, index) in SOCIAL_LIST"
                 :key="index"
-                class="text-sm text-neutral-300"
+                class="text-sm md:text-base text-neutral-300 hover:underline"
               >
                 <a :href="nav.href">{{ nav.name }}</a>
               </li>
@@ -74,7 +82,15 @@ import { NAV_LIST } from '../helpers/constants';
         <p
           class="text-neutral-200 text-base text-center border-t border-neutral-700 pt-2 md:pt-4"
         >
-          Created By Rifky Alfarez | Design by lorem at Figma
+          Created By
+          <a href="www.rifkyalfarez.my.id" class="hover:underline"
+            >Rifky Alfarez</a
+          >
+          | Design Inspired by
+          <a href="https://www.figma.com/@praha" class="hover:underline"
+            >Praha</a
+          >
+          at Figma
         </p>
       </div>
     </div>
