@@ -23,3 +23,18 @@ export const formatDollar = (amount: number) => {
     maximumFractionDigits: 2,
   }).format(amount);
 };
+
+export const toSlugCase = (slug: string) => {
+  return slug
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+};
+
+export const toTitleCase = (text: string) => {
+  return text
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};

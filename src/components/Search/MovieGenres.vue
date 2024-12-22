@@ -28,7 +28,7 @@
         class="bg-[red]/30 hover:bg-[red]/50 border border-[red]/50 rounded-md px-2 py-1"
       >
         <a
-          href="/genre/movie/TODO:id"
+          :href="`/genre/movie/${genre.id}?genre=${toSlugCase(genre.name)}`"
           class="text-base text-neutral-200 text-center"
           >{{ genre.name }}</a
         >
@@ -41,6 +41,7 @@
 import { onMounted, ref } from 'vue';
 import { Genre } from '../../types/genre';
 import { fetchGenres } from '../../services/movieApi';
+import { toSlugCase } from '../../helpers/utils';
 
 const genres = ref<Genre[]>([]);
 const loading = ref<boolean>(false);

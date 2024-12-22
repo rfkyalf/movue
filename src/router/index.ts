@@ -6,6 +6,7 @@ const HomeView = () => import('../views/HomeView.vue');
 const MoviesView = () => import('../views/MoviesView.vue');
 const SearchView = () => import('../views/SearchView.vue');
 const ShowsView = () => import('../views/ShowsView.vue');
+const MovieGenreView = () => import('../views/MovieGenreView.vue');
 
 const routes = [
   { path: '/', component: HomeView },
@@ -14,6 +15,7 @@ const routes = [
   { path: '/search', component: SearchView },
   { path: '/detail/movie/:id', component: DetailMovieView },
   { path: '/detail/tv/:id', component: DetailShowView },
+  { path: '/genre/movie/:id', component: MovieGenreView },
 ];
 
 const router = createRouter({

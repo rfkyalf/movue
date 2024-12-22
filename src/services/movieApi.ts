@@ -45,10 +45,10 @@ export const fetchTVs = async (status: string) => {
   }
 };
 
-export const fetchMoviesByGenre = async (genreId: number) => {
+export const fetchMoviesByGenre = async (genreId: number, page: number = 1) => {
   try {
     const response = await axiosInstance.get(
-      `/discover/movie?with_genres=${genreId}&api_key=${API_KEY}`
+      `/discover/movie?with_genres=${genreId}&page=${page}&api_key=${API_KEY}`
     );
 
     return response.data;

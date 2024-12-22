@@ -109,7 +109,9 @@ watch(searchQuery, async (newQuery) => {
   try {
     const data = await fetchSearch(newQuery);
     if (data?.results) {
-      searchs.value = data.results;
+      searchs.value = data.results.filter(
+        (search: SearchResult) => search.media_type !== 'person'
+      );
     }
   } catch (err) {
     error.value = err instanceof Error ? err.message : 'Unknown error occured';
