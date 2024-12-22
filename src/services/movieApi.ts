@@ -57,6 +57,18 @@ export const fetchMoviesByGenre = async (genreId: number, page: number = 1) => {
     return null;
   }
 };
+export const fetchTVsByGenre = async (genreId: number, page: number = 1) => {
+  try {
+    const response = await axiosInstance.get(
+      `/discover/tv?with_genres=${genreId}&page=${page}&api_key=${API_KEY}`
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log('Failed to fetch data', error);
+    return null;
+  }
+};
 
 export const fetchGenres = async (type: string) => {
   try {
@@ -70,10 +82,10 @@ export const fetchGenres = async (type: string) => {
   }
 };
 
-export const fetchSearch = async (query: string) => {
+export const fetchSearch = async (query: string, page: number = 1) => {
   try {
     const response = await axiosInstance.get(
-      `/search/multi?query=${query}&api_key=${API_KEY}`
+      `/search/multi?query=${query}&page=${page}&api_key=${API_KEY}`
     );
     return response.data;
   } catch (error) {

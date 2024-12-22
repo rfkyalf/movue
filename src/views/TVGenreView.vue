@@ -6,7 +6,7 @@
         <span class="bg-[red]/90 px-2 text-neutral-100 rounded-lg">{{
           toTitleCase(genre)
         }}</span>
-        Movies
+        TVs
       </h2>
       <div
         class="h-[1px] w-full bg-gradient-to-r from-neutral-950 via-[red]/90 to-neutral-950 mt-4 md:mt-8"
@@ -61,20 +61,20 @@
           :key="index"
           class="bg-neutral-500 rounded-lg animate-pulse w-full h-[230px] xl:h-[280px]"
         ></li>
-        <li v-if="!loading && movies" v-for="movie in movies" :key="movie.id">
-          <a :href="`/detail/movie/${movie.id}`" class="hover:opacity-50">
+        <li v-if="!loading && tvs" v-for="tv in tvs" :key="tv.id">
+          <a :href="`/detail/tv/${tv.id}`" class="hover:opacity-50">
             <img
-              v-if="movie.poster_path"
-              :src="`${IMAGE_ENDPOINT_MEDIUM}${movie.poster_path}`"
-              :alt="movie.title"
-              :title="movie.title"
+              v-if="tv.poster_path"
+              :src="`${IMAGE_ENDPOINT_MEDIUM}${tv.poster_path}`"
+              :alt="tv.name"
+              :title="tv.name"
               class="min-w-full h-[230px] xl:h-[280px] object-cover object-center rounded-lg"
             />
             <img
               v-else
               :src="'/placeholder.svg'"
-              :alt="movie.title"
-              :title="movie.title"
+              :alt="tv.name"
+              :title="tv.name"
               class="min-w-full h-[230px] xl:h-[280px] object-cover object-center rounded-lg"
             />
           </a>
@@ -90,26 +90,26 @@ import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { IMAGE_ENDPOINT_MEDIUM } from '../helpers/constants';
 import { toTitleCase } from '../helpers/utils';
-import { fetchMoviesByGenre } from '../services/movieApi';
-import { Movie } from '../types/movie';
+import { fetchTVsByGenre } from '../services/movieApi';
+import { TV } from '../types/movie';
 
 const route = useRoute();
 const id = Number(route.params.id);
 const genre = route.query.genre as string;
 
-const movies = ref<Movie[]>([]);
+const tvs = ref<TV[]>([]);
 const loading = ref<boolean>(false);
 const error = ref<string | null>(null);
 const currentPage = ref<number>(1);
 const totalPage = ref<number>(500);
 
-const fetchMovies = async () => {
+const fetchTVs = async () => {
   loading.value = true;
 
   try {
-    const data = await fetchMoviesByGenre(id, currentPage.value);
+    const data = await fetchTVsByGenre(id, currentPage.value);
     if (data) {
-      movies.value = data.results;
+      tvs.value = data.results;
       currentPage.value = data.page;
       totalPage.value = data.total_pages >= 500 ? 500 : data.total_pages;
     }
@@ -165,8 +165,8 @@ const pagination = computed(() => {
   }
 });
 
-onMounted(fetchMovies);
+onMounted(fetchTVs);
 watch([currentPage], async () => {
-  await fetchMovies();
+  await fetchTVs();
 });
 </script>

@@ -2,11 +2,10 @@
   <main class="min-h-screen bg-neutral-950 py-24 md:py-28">
     <section class="wrapper">
       <h2 class="text-3xl font-bold text-neutral-50 text-center md:text-start">
-        Explore
+        Search results for:
         <span class="bg-[red]/90 px-2 text-neutral-100 rounded-lg">{{
-          toTitleCase(genre)
+          toTitleCase(term)
         }}</span>
-        Movies
       </h2>
       <div
         class="h-[1px] w-full bg-gradient-to-r from-neutral-950 via-[red]/90 to-neutral-950 mt-4 md:mt-8"
@@ -61,20 +60,36 @@
           :key="index"
           class="bg-neutral-500 rounded-lg animate-pulse w-full h-[230px] xl:h-[280px]"
         ></li>
-        <li v-if="!loading && movies" v-for="movie in movies" :key="movie.id">
-          <a :href="`/detail/movie/${movie.id}`" class="hover:opacity-50">
+        <li
+          v-if="!loading && searchs"
+          v-for="search in searchs"
+          :key="search.id"
+        >
+          <a
+            :href="
+              search.media_type === 'movie'
+                ? `/detail/movie/${search.id}`
+                : search.media_type === 'tv'
+                ? `/detail/tv/${search.id}`
+                : `/`
+            "
+            class="hover:opacity-50"
+          >
             <img
-              v-if="movie.poster_path"
-              :src="`${IMAGE_ENDPOINT_MEDIUM}${movie.poster_path}`"
-              :alt="movie.title"
-              :title="movie.title"
+              v-if="search.poster_path || search.profile_path"
+              :src="
+                IMAGE_ENDPOINT_MEDIUM +
+                (search.poster_path || search.profile_path)
+              "
+              :alt="search.title || search.name"
+              :title="search.title || search.name"
               class="min-w-full h-[230px] xl:h-[280px] object-cover object-center rounded-lg"
             />
             <img
               v-else
-              :src="'/placeholder.svg'"
-              :alt="movie.title"
-              :title="movie.title"
+              src="/placeholder.svg"
+              :alt="search.title || search.name"
+              :title="search.title || search.name"
               class="min-w-full h-[230px] xl:h-[280px] object-cover object-center rounded-lg"
             />
           </a>
@@ -90,26 +105,26 @@ import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { IMAGE_ENDPOINT_MEDIUM } from '../helpers/constants';
 import { toTitleCase } from '../helpers/utils';
-import { fetchMoviesByGenre } from '../services/movieApi';
-import { Movie } from '../types/movie';
+import { fetchSearch } from '../services/movieApi';
+import { SearchResult } from '../types/movie';
 
 const route = useRoute();
-const id = Number(route.params.id);
-const genre = route.query.genre as string;
 
-const movies = ref<Movie[]>([]);
+const term = route.params.term as string;
+
+const searchs = ref<SearchResult[]>([]);
 const loading = ref<boolean>(false);
 const error = ref<string | null>(null);
 const currentPage = ref<number>(1);
 const totalPage = ref<number>(500);
 
-const fetchMovies = async () => {
+const fetchSearchs = async () => {
   loading.value = true;
 
   try {
-    const data = await fetchMoviesByGenre(id, currentPage.value);
+    const data = await fetchSearch(term, currentPage.value);
     if (data) {
-      movies.value = data.results;
+      searchs.value = data.results;
       currentPage.value = data.page;
       totalPage.value = data.total_pages >= 500 ? 500 : data.total_pages;
     }
@@ -165,8 +180,8 @@ const pagination = computed(() => {
   }
 });
 
-onMounted(fetchMovies);
+onMounted(fetchSearchs);
 watch([currentPage], async () => {
-  await fetchMovies();
+  await fetchSearchs();
 });
 </script>

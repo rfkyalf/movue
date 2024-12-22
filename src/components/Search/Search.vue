@@ -19,10 +19,14 @@
           @input="(event) => debounceSearchQuery((event.target as HTMLInputElement).value)"
           :class="{ 'border-b border-neutral-800': searchQuery }"
           class="bg-neutral-900 w-full text-base px-4 py-2 text-neutral-100 rounded-lg"
+          @keydown.enter="goToSearchPage"
         />
-        <button class="bg-[red]/90 text-white text-base px-4 py-2 rounded-lg">
+        <a
+          :href="`/search/${searchQuery}`"
+          class="bg-[red]/90 text-white text-base px-4 py-2 rounded-lg"
+        >
           Search
-        </button>
+        </a>
       </div>
       <div v-if="searchQuery && searchs.length === 0">
         <p class="text-sm text-neutral-400 px-4 py-2">No result found</p>
@@ -47,7 +51,7 @@
                 ? `/detail/movie/${search.id}`
                 : search.media_type === 'tv'
                 ? `/detail/tv/${search.id}`
-                : `/detail/person/${search.id}`
+                : `/`
             "
             class="flex items-center gap-x-2 hover:bg-neutral-800"
           >
@@ -58,12 +62,14 @@
                 (search.poster_path || search.profile_path)
               "
               :alt="search.title || search.name"
+              :title="search.title || search.name"
               class="size-10 rounded-md object-cover object-center"
             />
             <img
               v-if="search.poster_path === null || search.profile_path === null"
               src="/placeholder.svg"
-              alt="placeholder"
+              :alt="search.title || search.name"
+              :title="search.title || search.name"
               class="size-10 rounded-md object-cover object-center"
             />
             <p class="text-base text-neutral-100">
@@ -80,7 +86,7 @@
 import { ref, watch } from 'vue';
 
 import debounce from 'lodash.debounce';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import { SearchResult } from '../../types/movie';
 import { fetchSearch } from '../../services/movieApi';
 import { IMAGE_ENDPOINT_SMALL } from '../../helpers/constants';
@@ -89,6 +95,13 @@ const searchs = ref<SearchResult[]>([]);
 const loading = ref<boolean>(false);
 const error = ref<string | null>(null);
 const searchQuery = ref<string>('');
+const router = useRouter();
+
+const goToSearchPage = () => {
+  if (searchQuery.value.trim()) {
+    router.push(`/search/${searchQuery.value.trim()}`);
+  }
+};
 
 const setSearchQuery = (query: string) => {
   searchQuery.value = query;
