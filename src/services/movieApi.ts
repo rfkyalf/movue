@@ -1,10 +1,16 @@
 import axios from 'axios';
+import axiosRateLimit from 'axios-rate-limit';
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-const axiosInstance = axios.create({
-  baseURL: 'https://api.themoviedb.org/3',
-});
+const axiosInstance = axiosRateLimit(
+  axios.create({
+    baseURL: 'https://api.themoviedb.org/3',
+  }),
+  {
+    maxRPS: 3,
+  }
+);
 
 export const fetchDatas = async (type: string) => {
   try {
