@@ -39,7 +39,7 @@ onMounted(async () => {
     class="flex items-center overflow-auto no-scrollbar gap-2"
   >
     <a
-      :href="`/genre/movie/${genre.id}`"
+      :href="`/genre/movie/${genre.id}?genre=${genre.name}`"
       v-for="genre in genres"
       :key="genre.id"
       class="group bg-neutral-900 hover:bg-neutral-800 border flex-shrink-0 border-neutral-800 rounded-lg flex flex-col gap-y-3 justify-between p-4 overflow-hidden"
